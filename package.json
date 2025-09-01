@@ -1,0 +1,23 @@
+{
+  "name": "@klinecharts/preview",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0"
+  },
+  "dependencies": {
+    "@klinecharts/pro": "^0.1.1",
+    "axios": "^1.11.0",
+    "klinecharts": "^9.8.6"
+  },
+  "homepage": "https://ike-yu-byte.github.io/kline-demo/"
+}
