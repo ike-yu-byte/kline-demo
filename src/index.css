@@ -37,10 +37,17 @@ body {
 }
 
 .announcement-bar a {
-  color: #1677ff
+  color: #1677ff;
 }
 
 #container {
   height: calc(100vh - 30px - 6px);
 }
 
+.klinecharts-pro-period-bar {
+  overflow: scroll;
+}
+
+.klinecharts-pro-period-bar .item {
+  white-space: nowrap;
+}

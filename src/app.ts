@@ -1,16 +1,35 @@
 import {
   KLineChartPro,
+  loadLocales,
   // DefaultDatafeed
 } from "@klinecharts/pro";
-import { CustomDatafeed } from "./utils/index";
+import { CustomDatafeed, getQuery } from "@/utils";
+import { registerLocale } from "klinecharts";
+
+const appLocales = import.meta.glob("./i18n/*.ts", { eager: true });
+const messages: any = {};
+for (const path in appLocales) {
+  const langCode = (path.split("/") as any).pop().replace(".ts", "");
+  messages[langCode] = Object.assign(
+    {},
+    messages[langCode],
+    (appLocales[`./i18n/${langCode}.ts`] as any).default
+  );
+  loadLocales(langCode, messages[langCode]);
+  registerLocale(langCode, messages[langCode]);
+}
 
 // localStorage.setItem("apiKey", "dObde5ZuPvQ3qX4U5k_nMi3YeXNqOjoi");
 
+const query = getQuery();
+const locale = query.lang || "en-US";
+const theme = query.theme || "light";
+const showRule = query.showRule || "none";
+
 export default function setupApp(root: HTMLDivElement) {
-  let locale = "zh-CN";
-  if (window.location.hash.endsWith("#en-US")) {
-    locale = "en-US";
-  }
+  const drawingBarVisible = query.drawingBarVisible
+    ? JSON.parse(query.drawingBarVisible)
+    : true;
   root.innerHTML = `
     <div id="container">
     </div>
@@ -38,13 +57,13 @@ export default function setupApp(root: HTMLDivElement) {
     },
     period: {
       // 时间跨度乘数，如1，3，5
-      multiplier: 15,
+      multiplier: 1,
       // 时间跨度，如'year'，'month'
       timespan: "minute",
       // 文字，用于显示，如'1H'，'5H'
-      text: "15m",
+      text: "1m",
     },
-    drawingBarVisible: true, // 是否显示画线工具栏
+    drawingBarVisible: drawingBarVisible, // 是否显示画线工具栏
     subIndicators: ["VOL", "MACD"], // 副图里面的指标
     datafeed: new CustomDatafeed(),
     // new DefaultDatafeed(
@@ -54,12 +73,32 @@ export default function setupApp(root: HTMLDivElement) {
 
   const chart = new KLineChartPro(options);
 
-  chart.setLocale("en-US");
+  chart.setLocale(locale); // 只能解决图标canvas渲染部分文字国际化
   chart.setSymbol({
     shortName: "AAPL",
     name: "Apple Inc",
     exchange: "NASDAQ", // 添加交易所字段（需与CustomSymbolInfo匹配）
     ticker: "AAPL",
   });
-  // chart.setPeriod("5m");
+  chart.setTheme(theme);
+
+  chart.setPeriod({
+    multiplier: 1,
+    timespan: "minute",
+    text: "1m",
+  });
+
+  const styles = chart.getStyles();
+
+  chart.setStyles(
+    Object.assign({}, styles, {
+      candle: {
+        tooltip: {
+          showRule: showRule, // 'always'
+        },
+      },
+    })
+  );
+
+  console.log("styles", chart.getStyles());
 }

@@ -16,8 +16,10 @@
   },
   "dependencies": {
     "@klinecharts/pro": "^0.1.1",
+    "@types/node": "^24.3.0",
     "axios": "^1.11.0",
-    "klinecharts": "^9.8.6"
+    "klinecharts": "^9.8.6",
+    "vite-plugin-singlefile": "^2.3.0"
   },
   "homepage": "https://ike-yu-byte.github.io/kline-demo/"
 }

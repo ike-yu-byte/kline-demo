@@ -1,3 +1,4 @@
+// 中文
 const lang = {
   indicator: "指标",
   main_indicator: "主图指标",
@@ -120,6 +121,20 @@ const lang = {
   reverse_coordinate: "倒置坐标",
   grid_show: "网格线显示",
   restore_default: "恢复默认",
-};
 
+  time: "时间：",
+  open: "开：",
+  high: "高：",
+  low: "低：",
+  close: "收：",
+  volume: "成交量：",
+  second: "秒",
+  minute: "分钟",
+  hour: "小时",
+  day: "天",
+  week: "周",
+  month: "月",
+  year: "年",
+};
+// 中文
 export default lang;
