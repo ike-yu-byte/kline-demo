@@ -26,6 +26,9 @@ const locale = query.lang || "en-US";
 const theme = query.theme || "light";
 const showRule = query.showRule || "none";
 
+const baseURL = query.baseURL || "";
+localStorage.setItem("baseURL", baseURL);
+
 export default function setupApp(root: HTMLDivElement) {
   const drawingBarVisible = query.drawingBarVisible
     ? JSON.parse(query.drawingBarVisible)
@@ -58,7 +61,7 @@ export default function setupApp(root: HTMLDivElement) {
     period: {
       // 时间跨度乘数，如1，3，5
       multiplier: 1,
-      // 时间跨度，如'year'，'month'
+      // 时间跨度，如'year'，'month', 'minute'
       timespan: "minute",
       // 文字，用于显示，如'1H'，'5H'
       text: "1m",

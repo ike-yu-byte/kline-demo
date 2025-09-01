@@ -2,31 +2,39 @@
 
 KLineChart of CH.
 
+## query 里面传参
+
+```
+baseURL: 请求路径，必传
+locale: 国际化语言，值看下面国际化部分，默认为en-US
+theme：主题，dark/light，默认为light
+showRule：是否显示默认tooltip，默认为false
+```
+
 ## 国际化
 
 ```
 query里面lang传对应国际化语言
 ┌─ar-SA  // 阿拉伯语
-│─br  // 葡萄牙语
-├─da  // 丹麦语
-├─de  // 德语
-├─el  // 希腊语
-├─en  // 英文（美式）
-├─es  // 西班牙语
-├─fa  // 波斯语
-├─fr  // 法语
-├─hi  // 印地语
-├─id  // 印尼语
-├─it  // 意大利语
-├─ja  // 日语
-├─ko  // 韩语
-├─ru  // 俄语
-├─th  // 泰语
-├─tu  // 土耳其语
-├─ur  // 巴基斯坦语
-├─vi  // 越南语
-├─zh  // 简体中文
-└─zhHK // 繁体中文
+│─pt-BR  // 葡萄牙语
+├─da-DK  // 丹麦语
+├─de-DE  // 德语
+├─el-GR  // 希腊语
+├─en-US  // 英文（美式）
+├─es-ES  // 西班牙语
+├─fa-IR  // 波斯语
+├─fr-FR  // 法语
+├─hi-IN  // 印地语
+├─id-ID  // 印尼语
+├─it-IT  // 意大利语
+├─ja-JP  // 日语
+├─ko-KR  // 韩语
+├─ru-RU  // 俄语
+├─th-TH  // 泰语
+├─tr-TR  // 土耳其语
+├─vi-VN  // 越南语
+├─zh-CN  // 简体中文
+└─zh-HK // 繁体中文
 ```
 
 ## Links

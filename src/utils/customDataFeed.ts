@@ -6,6 +6,8 @@ import {
   type DatafeedSubscribeCallback,
 } from "@klinecharts/pro";
 
+// import { getKlineData } from "@/api";
+
 //  ticker: string;
 // 	name?: string;
 // 	shortName?: string;
@@ -101,8 +103,6 @@ export class CustomDatafeed {
       )}`
     );
 
-    console.log("history symbol", symbol);
-
     // 模拟API请求延迟
     await new Promise((resolve) => setTimeout(resolve, 500));
 
@@ -110,8 +110,6 @@ export class CustomDatafeed {
     const data: KLineData[] = [];
     const count = 200; // 返回200根K线
     const interval = this.resolveInterval(period); // 间隔多少毫秒，如当前选中15m, 则为 15 * 60 * 1000 ms
-
-    console.log("interval", interval);
 
     let currentTime = to;
     for (let i = 0; i < count; i++) {
